@@ -92,7 +92,7 @@ body {
 .members-card td { padding: 9px 20px; font-size: 13px; border-bottom: 1px solid rgba(0,0,0,0.04); vertical-align: middle; }
 .members-card tr.gr td { background: #f5f5f7; font-size: 10px; font-weight: 700; color: #6e6e73; letter-spacing: 1.5px; text-transform: uppercase; padding: 7px 20px; }
 .members-card td.tc { color: #6e6e73; font-size: 12px; font-weight: 500; text-align: center; width: 130px; }
-.members-card td.opt { color: #aeaeb2; }
+.members-card td.opt, .members-card span.opt { color: #aeaeb2; }
 .members-card tr.total td { background: #1d1d1f; color: #fff; font-size: 13px; font-weight: 600; text-align: center; border: none; padding: 12px; }
 .members-note { padding: 10px 20px; font-size: 11px; color: #aeaeb2; }
 
@@ -121,21 +121,21 @@ body {
 .date-picker-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   background: #fff;
-  border-radius: 20px;
-  padding: 24px 28px;
-  box-shadow: 0 4px 32px rgba(0,0,0,0.09);
-  margin-bottom: 24px;
+  border-radius: 16px;
+  padding: 14px 20px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  margin-bottom: 20px;
   flex-wrap: wrap;
-  border: 2px solid #e8e8ed;
+  border: 1.5px solid #e8e8ed;
 }
 .dp-label {
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 600;
   color: #1d1d1f;
   white-space: nowrap;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.2px;
 }
 .dp-label .dp-req {
   display: inline-block;
@@ -150,11 +150,11 @@ body {
 }
 .dp-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
 .date-btn {
-  padding: 12px 26px;
-  border: 2px solid rgba(0,0,0,0.12);
+  padding: 8px 20px;
+  border: 1.5px solid rgba(0,0,0,0.12);
   border-radius: 50px;
   background: #f5f5f7;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 600;
   color: #1d1d1f;
   cursor: pointer;
@@ -186,7 +186,30 @@ body {
   transition: box-shadow .3s;
 }
 .venue-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.11); }
+.venue-card { position: relative; }
 .venue-card.chosen { box-shadow: 0 0 0 3px #0071e3, 0 12px 48px rgba(0,113,227,0.15); }
+.venue-card.chosen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,113,227,0.06);
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 1;
+}
+.venue-card.chosen .card-title-area::after {
+  content: '✓ 선택됨';
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: #0071e3;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 50px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
 
 .card-img { width: 100%; height: 180px; object-fit: cover; display: block; }
 .card-img-ph {
@@ -398,16 +421,25 @@ body {
   .info-cell { min-width: 50%; border-right: none; border-bottom: 1px solid rgba(0,0,0,0.05); }
 }
 @media (max-width: 600px) {
-  body { padding-bottom: 88px; }
-  .hero { padding: 52px 20px 44px; }
-  .wrap { padding: 0 16px; }
+  body { padding-bottom: 100px; overflow-x: hidden; }
+  .hero { padding: 44px 20px 36px; }
+  .hero h1 { font-size: 36px; letter-spacing: -1px; }
+  .wrap { padding: 0 14px; }
   .venues-grid { grid-template-columns: 1fr; }
   .info-cell { min-width: 50%; }
   .tl-split { grid-template-columns: 1fr; }
   .pros-cons { grid-template-columns: 1fr; }
-  #vote-bar { padding: 12px 16px; gap: 10px; }
-  #vote-submit-btn { padding: 10px 18px; font-size: 13px; }
-  .date-picker-row { gap: 10px; }
+  .date-picker-row { flex-direction: column; align-items: flex-start; padding: 18px 18px; gap: 12px; }
+  .dp-buttons { width: 100%; }
+  .date-btn { flex: 1; text-align: center; padding: 11px 10px; font-size: 14px; }
+  .dp-buttons { display: flex; gap: 8px; }
+  #vote-bar { flex-direction: column; align-items: stretch; padding: 12px 16px; gap: 8px; }
+  .bar-pills { flex-wrap: wrap; gap: 6px; }
+  #vote-submit-btn { width: 100%; padding: 13px; font-size: 14px; }
+  .login-card { padding: 32px 20px; }
+  .login-btn-row { flex-direction: column; }
+  .login-btn-cancel { padding: 13px; }
+  .sh { font-size: 11px; margin-top: 28px; }
 }
 /* ── Login Overlay ── */
 #login-overlay {
@@ -503,7 +535,7 @@ body {
 <!-- Hero -->
 <div class="hero">
   <div class="tag">2026 Workshop</div>
-  <h1>워크샵<br>장소 후보 검토안</h1>
+  <h1>우리 워크샵<br>어디로 갈까요?</h1>
   <p class="desc">총 5개 후보지 · 최종 1개 선정 예정</p>
 </div>
 
@@ -512,7 +544,7 @@ body {
   <div class="info-cell"><div class="ic-icon">📅</div><div class="ic-label">일자</div><div class="ic-val">6월 12일 / 19일 / 26일<br>중 1일 (금요일)</div></div>
   <div class="info-cell"><div class="ic-icon">🕘</div><div class="ic-label">시간</div><div class="ic-val">09:00 ~ 17:00<br><span style="font-size:12px;color:#aeaeb2">서울 도착 기준</span></div></div>
   <div class="info-cell"><div class="ic-icon">👥</div><div class="ic-label">대상</div><div class="ic-val">방배·신도림 남직원 중<br>파트장·센터장·매니저</div></div>
-  <div class="info-cell"><div class="ic-icon">💰</div><div class="ic-label">예산</div><div class="ic-val">인당 100,000원 내외<br><span style="font-size:12px;color:#aeaeb2">식비 미포함</span></div></div>
+  <div class="info-cell"><div class="ic-icon">🗳️</div><div class="ic-label">투표</div><div class="ic-val">일자 1개 · 장소 1개<br><span style="font-size:12px;color:#aeaeb2">중복 선택 불가</span></div></div>
 </div>
 
 <div class="wrap">
@@ -852,13 +884,15 @@ body {
     <div style="font-size:56px;margin-bottom:16px;">🎉</div>
     <div style="font-size:24px;font-weight:700;color:#fff;margin-bottom:8px;letter-spacing:-0.5px;">투표 완료!</div>
     <div style="font-size:15px;color:rgba(255,255,255,.7);line-height:1.8;">소중한 의견 감사합니다.<br>결과는 취합 후 공유드릴게요.</div>
+    <div style="margin-top:16px;font-size:12px;color:rgba(255,255,255,.45);line-height:1.7;">※ 재투표 시 마지막 투표 내용만 반영됩니다.</div>
+    <button onclick="document.getElementById('vote-done-overlay').classList.remove('show')" style="margin-top:24px;padding:12px 32px;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);border-radius:50px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;">닫기</button>
   </div>
 </div>
 
 <script>
   var loggedTeam = '', loggedName = '';
 
-  var members = JSON.parse(atob('eyLsnbjsgqzstJ3rrLTtjIAiOlsi7JaR7LC96recIl0sIuyekOyCsOq0gOumrO2MgCI6WyLquYDsiJjruYgiXSwi7JiB7JeF7KeA7JuQ7YyAIjpbIuqwleuPmeuqhSJdLCLqtazrj4XsmrTsmIHtjIAiOlsi64Ko7Iq56rG0Iiwi6rWs64+FIOyVhOultOuwlOydtO2KuCDsp4Hsm5AiXSwi7JiB7JeF7YyAIjpbIuq5gOygleybhSIsIuuwleynhO2YhCIsIuycpOyXsOyngSIsIu2ZjeyalO2VnCIsIuq5gOyerOq0kSJdLCLsnpDsgqxNVOyatOyYge2MgCI6WyLrsJXso7ztmIQiLCLshJzsoJXqt5wiLCLquYDshJzsnKQiXSwi7Iug7IKs7JeF6rCc67Cc7YyAIjpbIuuwsOyKueynhCIsIuyLoOyerOyasCJdLCLsmKTthqDrnbzsnbTrk5ztjIAiOlsi7J6l7KO87JiBIiwi67Cx7J6s7JqpIiwi7JaR7LKg7KeEIl0sIuqwnOuwnO2MgCI6WyLsnKDtmITsmrAiXSwi7ISc67mE7Iqk7Jq07JiB7YyAIjpbIuygle2YhOyasCIsIuyWkeyKue2drCJdLCLsgqzqs6DqtIDrpqztjIAiOlsi7J6E67OR66CsIiwi6rmA7ZiE7ZWEIl0sIlRGVCI6WyLshJzsmrjrjIAiXX0='));
+  var members = JSON.parse(decodeURIComponent(escape(atob('eyLsnbjsgqzstJ3rrLTtjIAiOlsi7JaR7LC96recIl0sIuyekOyCsOq0gOumrO2MgCI6WyLquYDsiJjruYgiXSwi7JiB7JeF7KeA7JuQ7YyAIjpbIuqwleuPmeuqhSJdLCLqtazrj4XsmrTsmIHtjIAiOlsi64Ko7Iq56rG0Iiwi6rWs64+FIOyVhOultOuwlOydtO2KuCDsp4Hsm5AiXSwi7JiB7JeF7YyAIjpbIuq5gOygleybhSIsIuuwleynhO2YhCIsIuycpOyXsOyngSIsIu2ZjeyalO2VnCIsIuq5gOyerOq0kSJdLCLsnpDsgqxNVOyatOyYge2MgCI6WyLrsJXso7ztmIQiLCLshJzsoJXqt5wiLCLquYDshJzsnKQiXSwi7Iug7IKs7JeF6rCc67Cc7YyAIjpbIuuwsOyKueynhCIsIuyLoOyerOyasCJdLCLsmKTthqDrnbzsnbTrk5ztjIAiOlsi7J6l7KO87JiBIiwi67Cx7J6s7JqpIiwi7JaR7LKg7KeEIl0sIuqwnOuwnO2MgCI6WyLsnKDtmITsmrAiXSwi7ISc67mE7Iqk7Jq07JiB7YyAIjpbIuygle2YhOyasCIsIuyWkeyKue2drCJdLCLsgqzqs6DqtIDrpqztjIAiOlsi7J6E67OR66CsIiwi6rmA7ZiE7ZWEIl0sIlRGVCI6WyLshJzsmrjrjIAiXX0='))));
 
   function doLogin() {
     var team = document.getElementById('login-team').value;
