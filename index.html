@@ -554,28 +554,17 @@ body {
 <div class="members-card">
   <table>
     <tbody>
-      <tr class="gr"><td colspan="2">📌 경영지원실</td></tr>
-      <tr><td class="tc">인사총무팀</td><td>양창규M</td></tr>
       <tr class="gr"><td colspan="2">📌 자산관리그룹</td></tr>
-      <tr><td class="tc">자산관리팀</td><td>김수빈M</td></tr>
-      <tr><td class="tc">영업지원팀</td><td>강동명M</td></tr>
-      <tr><td class="tc">구독운영팀</td><td class="opt">(남승건M, 구독 아르바이트 직원)</td></tr>
+      <tr><td colspan="2" style="padding:10px 20px;font-size:13px;">양창규, 김수빈, 강동명, 남승건, 최성원</td></tr>
       <tr class="gr"><td colspan="2">📌 차량대여그룹</td></tr>
-      <tr><td class="tc">영업팀</td><td><span class="opt">(김정웅C, 박진현M)</span>, 윤연직M, 홍요한M, 김재광M</td></tr>
-      <tr><td class="tc">자사MT운영팀</td><td>박주현P, 서정규M, 김서윤M</td></tr>
-      <tr class="gr"><td colspan="2">📌 DX그룹</td></tr>
-      <tr><td class="tc">신사업개발팀</td><td>배승진M, 신재우M</td></tr>
-      <tr><td class="tc">오토라이드팀</td><td>장주영M, <span class="opt">(백재용M, 양철진M)</span></td></tr>
-      <tr><td class="tc">개발팀</td><td>유현우M</td></tr>
+      <tr><td colspan="2" style="padding:10px 20px;font-size:13px;">김정웅, 윤연직, 김재광, 홍요한, 박주현, 정대영</td></tr>
       <tr class="gr"><td colspan="2">📌 카셰어링그룹</td></tr>
-      <tr><td class="tc">서비스운영팀</td><td class="opt">(정현우P, 양승희M)</td></tr>
-      <tr><td class="tc">사고관리팀</td><td class="opt">(임병렬M, 김현필M)</td></tr>
-      <tr class="gr"><td colspan="2">📌 기타</td></tr>
-      <tr><td class="tc">TFT</td><td>M</td></tr>
-      <tr class="total"><td colspan="2">총 &nbsp;19인 ~ 24인</td></tr>
+      <tr><td colspan="2" style="padding:10px 20px;font-size:13px;">정현우, 양승희, 임병렬, 김현필</td></tr>
+      <tr class="gr"><td colspan="2">📌 DX그룹</td></tr>
+      <tr><td colspan="2" style="padding:10px 20px;font-size:13px;">장주영, 신재우, 유현우, 배승진</td></tr>
+      <tr class="total"><td colspan="2">총 &nbsp;19인</td></tr>
     </tbody>
   </table>
-  <p class="members-note">* ( ) 인원은 근무 일정 확인 후 동시 참석 또는 1인 참석 진행</p>
 </div>
 
 <!-- Todo -->
@@ -845,29 +834,23 @@ body {
   <div class="login-card">
     <div class="login-logo">🗳️</div>
     <h2 class="login-title">투표 제출</h2>
-    <p class="login-sub">팀과 성명을 확인 후 투표가 제출됩니다</p>
+    <p class="login-sub">그룹과 성명을 확인 후 투표가 제출됩니다</p>
     <div class="login-fields">
       <div class="login-field">
-        <label class="login-label">팀</label>
+        <label class="login-label">그룹</label>
         <select id="login-team" class="login-select">
-          <option value="">팀을 선택해주세요</option>
-          <option>인사총무팀</option>
-          <option>자산관리팀</option>
-          <option>영업지원팀</option>
-          <option>구독운영팀</option>
-          <option>영업팀</option>
-          <option>자사MT운영팀</option>
-          <option>신사업개발팀</option>
-          <option>오토라이드팀</option>
-          <option>개발팀</option>
-          <option>서비스운영팀</option>
-          <option>사고관리팀</option>
-          <option>TFT</option>
+          <option value="">그룹을 선택해주세요</option>
+          <option>자산관리그룹</option>
+          <option>차량대여그룹</option>
+          <option>카셰어링그룹</option>
+          <option>DX그룹</option>
         </select>
       </div>
       <div class="login-field">
         <label class="login-label">성명</label>
-        <input type="text" id="login-name" class="login-input" placeholder="이름을 입력해주세요">
+        <select id="login-name" class="login-select" disabled>
+          <option value="">그룹을 먼저 선택해주세요</option>
+        </select>
       </div>
     </div>
     <div id="login-error" class="login-error"></div>
@@ -892,7 +875,30 @@ body {
 <script>
   var loggedTeam = '', loggedName = '';
 
-  var members = JSON.parse(decodeURIComponent(escape(atob('eyLsnbjsgqzstJ3rrLTtjIAiOlsi7JaR7LC96recIl0sIuyekOyCsOq0gOumrO2MgCI6WyLquYDsiJjruYgiXSwi7JiB7JeF7KeA7JuQ7YyAIjpbIuqwleuPmeuqhSJdLCLqtazrj4XsmrTsmIHtjIAiOlsi64Ko7Iq56rG0Iiwi6rWs64+FIOyVhOultOuwlOydtO2KuCDsp4Hsm5AiXSwi7JiB7JeF7YyAIjpbIuq5gOygleybhSIsIuuwleynhO2YhCIsIuycpOyXsOyngSIsIu2ZjeyalO2VnCIsIuq5gOyerOq0kSJdLCLsnpDsgqxNVOyatOyYge2MgCI6WyLrsJXso7ztmIQiLCLshJzsoJXqt5wiLCLquYDshJzsnKQiXSwi7Iug7IKs7JeF6rCc67Cc7YyAIjpbIuuwsOyKueynhCIsIuyLoOyerOyasCJdLCLsmKTthqDrnbzsnbTrk5ztjIAiOlsi7J6l7KO87JiBIiwi67Cx7J6s7JqpIiwi7JaR7LKg7KeEIl0sIuqwnOuwnO2MgCI6WyLsnKDtmITsmrAiXSwi7ISc67mE7Iqk7Jq07JiB7YyAIjpbIuygle2YhOyasCIsIuyWkeyKue2drCJdLCLsgqzqs6DqtIDrpqztjIAiOlsi7J6E67OR66CsIiwi6rmA7ZiE7ZWEIl0sIlRGVCI6WyLshJzsmrjrjIAiXX0='))));
+  var members = {
+    "자산관리그룹": ["양창규", "김수빈", "강동명", "남승건", "최성원"],
+    "차량대여그룹": ["김정웅", "윤연직", "김재광", "홍요한", "박주현", "정대영"],
+    "카셰어링그룹": ["정현우", "양승희", "임병렬", "김현필"],
+    "DX그룹": ["장주영", "신재우", "유현우", "배승진"]
+  };
+
+  document.getElementById('login-team').addEventListener('change', function() {
+    var nameSelect = document.getElementById('login-name');
+    var group = this.value;
+    nameSelect.innerHTML = '<option value="">이름을 선택해주세요</option>';
+    if (group && members[group]) {
+      members[group].forEach(function(name) {
+        var opt = document.createElement('option');
+        opt.value = name;
+        opt.textContent = name;
+        nameSelect.appendChild(opt);
+      });
+      nameSelect.disabled = false;
+    } else {
+      nameSelect.innerHTML = '<option value="">그룹을 먼저 선택해주세요</option>';
+      nameSelect.disabled = true;
+    }
+  });
 
   function doLogin() {
     var team = document.getElementById('login-team').value;
@@ -906,13 +912,9 @@ body {
       document.getElementById('login-overlay').style.display = 'none';
       sendVote();
     } else {
-      err.textContent = '팀과 성명이 일치하지 않습니다';
+      err.textContent = '그룹과 성명이 일치하지 않습니다';
     }
   }
-
-  document.getElementById('login-name').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') doLogin();
-  });
 
   var selDate = '', selVenue = '', selVenueName = '', selVenueBtn = null;
 
